@@ -231,9 +231,9 @@ export default function NetworkSelector() {
       <SelectorControls onClick={conditionalToggle} interactive={showSelector}>
         <SelectorLogo interactive={showSelector} src={info.logoUrl || mainnetInfo.logoUrl} />
         <SelectorLabel>{info.label}</SelectorLabel>
-        {showSelector && <StyledChevronDown />}
+        {/* {showSelector && <StyledChevronDown />} */}
       </SelectorControls>
-      {open && (
+      {/* {open && (
         <FlyoutMenu>
           <FlyoutHeader>
             <Trans>Select a network</Trans>
@@ -242,7 +242,7 @@ export default function NetworkSelector() {
           <Row targetChain={SupportedChainId.OPTIMISM} />
           <Row targetChain={SupportedChainId.ARBITRUM_ONE} />
         </FlyoutMenu>
-      )}
+      )} */}
     </SelectorWrapper>
   )
 }

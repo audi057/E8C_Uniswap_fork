@@ -184,6 +184,16 @@ const UniIcon = styled.div`
   }
 `
 
+
+const LogoImage = styled.img`
+  width : 124px;
+  height : 100%;
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+    width : 80px;
+    margin-left : 18px;
+  `};
+`
+
 const activeClassName = 'ACTIVE'
 
 const StyledNavLink = styled(NavLink).attrs({
@@ -243,7 +253,6 @@ const StyledExternalLink = styled(ExternalLink).attrs({
     text-decoration: none;
   }
 `
-
 export default function Header() {
   const { account, chainId } = useActiveWeb3React()
 
@@ -272,7 +281,7 @@ export default function Header() {
       <Title href=".">
         <UniIcon>
           {/* <Logo fill={darkMode ? white : black} width="24px" height="100%" title="logo" /> */}
-          <img src={Logo} width="124px" height="100%" title="logo" />
+          <LogoImage src={Logo} title="logo" />
         </UniIcon>
       </Title>
       <HeaderLinks>

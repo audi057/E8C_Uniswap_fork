@@ -115,6 +115,13 @@ export const FRAX = new Token(
   'FRAX',
   'Frax'
 )
+export const E8C = new Token(
+  SupportedChainId.MAINNET,
+  '0x3b14a1dbd6630fc8916bf99611024fa63cda5dbe',
+  1,
+  'E8C',
+  'Ei8thCoin'
+)
 export const FXS = new Token(
   SupportedChainId.MAINNET,
   '0x3432B6A60D23Ca0dFCa7761B7ab56459D9C964D0',

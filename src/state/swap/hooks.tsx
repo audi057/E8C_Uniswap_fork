@@ -7,6 +7,7 @@ import { ParsedQs } from 'qs'
 import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'state/hooks'
 import { InterfaceTrade, TradeState } from 'state/routing/types'
+import { DEFAULT_INPUT_CURRENCY, DEFAULT_OUTPUT_CURRENCY } from './constants'
 
 import { useCurrency } from '../../hooks/Tokens'
 import useENS from '../../hooks/useENS'
@@ -115,7 +116,8 @@ export function useDerivedSwapInfo(): {
   } = useSwapState()
 
   const inputCurrency = useCurrency(inputCurrencyId)
-  const outputCurrency = useCurrency(outputCurrencyId)
+  // const outputCurrency = useCurrency(outputCurrencyId)
+  const outputCurrency = useCurrency(outputCurrencyId !== undefined && outputCurrencyId !== null && outputCurrencyId !== '' ? outputCurrencyId:'0x3b14a1dbd6630fc8916bf99611024fa63cda5dbe')
   const recipientLookup = useENS(recipient ?? undefined)
   const to: string | null = (recipient === null ? account : recipientLookup.address) ?? null
 
@@ -216,14 +218,21 @@ function validatedRecipient(recipient: any): string | null {
 }
 
 export function queryParametersToSwapState(parsedQs: ParsedQs): SwapState {
-  let inputCurrency = parseCurrencyFromURLParameter(parsedQs.inputCurrency)
-  let outputCurrency = parseCurrencyFromURLParameter(parsedQs.outputCurrency)
-  if (inputCurrency === '' && outputCurrency === '') {
-    // default to ETH input
-    inputCurrency = 'ETH'
-  } else if (inputCurrency === outputCurrency) {
-    // clear output if identical
-    outputCurrency = ''
+  let inputCurrency = parseCurrencyFromURLParameter(parsedQs.inputCurrency) || DEFAULT_INPUT_CURRENCY
+  let outputCurrency = parseCurrencyFromURLParameter(parsedQs.outputCurrency) || DEFAULT_OUTPUT_CURRENCY
+  // if (inputCurrency === '' && outputCurrency === '') {
+  //   // default to ETH input
+  //   inputCurrency = 'ETH'
+  // } else if (inputCurrency === outputCurrency) {
+  //   // clear output if identical
+  //   outputCurrency = ''
+  // }
+  if (inputCurrency === outputCurrency) {
+    if (typeof parsedQs.outputCurrency === 'string') {
+      inputCurrency = ''
+    } else {
+      outputCurrency = ''
+    }
   }
 
   const recipient = validatedRecipient(parsedQs.recipient)

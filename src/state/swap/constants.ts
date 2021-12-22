@@ -1,0 +1,4 @@
+// ETH
+export const DEFAULT_INPUT_CURRENCY = 'ETH'
+// TOKEN
+export const DEFAULT_OUTPUT_CURRENCY = '0x3b14a1dbd6630fc8916bf99611024fa63cda5dbe'
