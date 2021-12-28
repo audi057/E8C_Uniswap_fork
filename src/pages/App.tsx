@@ -88,10 +88,10 @@ export default function App() {
             <TopLevelModals />
             <Suspense fallback={<Loader />}>
               <Switch>
-                <Route strict path="/vote" component={Vote} />
+                {/* <Route strict path="/vote" component={Vote} />
                 <Route exact strict path="/create-proposal">
                   <Redirect to="/vote/create-proposal" />
-                </Route>
+                </Route> */}
                 <Route exact strict path="/claim" component={OpenClaimAddressModalAndRedirectToSwap} />
                 <Route exact strict path="/uni" component={Earn} />
                 <Route exact strict path="/uni/:currencyIdA/:currencyIdB" component={Manage} />
