@@ -27,7 +27,7 @@
         "symbol": "E8C",
         "decimals": 1,
         "chainId": 1,
-        "logoURI": "http://localhost:3000/images/E8C.png"
+        "logoURI": "https://e8-c-uniswap-fork.vercel.app/images/E8C.png"
       },
       {
         "chainId": 1,
